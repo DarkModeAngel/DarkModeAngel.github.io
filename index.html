@@ -6,6 +6,7 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #f5f5f5;
+      overflow: hidden;
     }
 
     .card {
@@ -15,7 +16,6 @@
       margin: 50px auto;
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      animation: fadeIn 1s ease-in-out;
     }
 
     h1 {
@@ -34,7 +34,52 @@
       width: 150px;
       border-radius: 50%;
       margin-top: 20px;
-      animation: rotateIn 1s ease-in-out;
+    }
+
+    .animated-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(45deg, #e91e63, #ff9800, #ffc107, #ffeb3b, #cddc39, #8bc34a, #4caf50, #009688, #00bcd4, #03a9f4, #2196f3, #3f51b5);
+      background-size: 300% 300%;
+      animation: animatedBackground 20s ease infinite;
+    }
+
+    @keyframes animatedBackground {
+      0% {
+        background-position: 0% 0%;
+      }
+      50% {
+        background-position: 100% 100%;
+      }
+      100% {
+        background-position: 0% 0%;
+      }
+    }
+
+    .rose-effect {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rose-effect:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('URL_DE_LAS_ROSAS') repeat;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .rose-effect:hover:after {
+      opacity: 1;
     }
 
     button {
@@ -46,59 +91,19 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      animation: bounceIn 1s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-
-    @keyframes rotateIn {
-      0% {
-        transform: rotate(-180deg);
-      }
-      100% {
-        transform: rotate(0deg);
-      }
-    }
-
-    @keyframes bounceIn {
-      0% {
-        transform: scale(0.1);
-        opacity: 0;
-      }
-      60% {
-        transform: scale(1.2);
-        opacity: 1;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
+  <div class="animated-bg"></div>
   <div class="card">
     <h1>Feliz Día de las Madres</h1>
-    <img src="https://elcomercio.pe/resizer/7SYqrbtz-yHHWAwn39FlzJgxf1o=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/GNB3HH3MUFFJHFYOPBKPX6IBCY.jpg" alt="Imagen del Día de las Madres">
+    <div class="rose-effect">
+      <img src="https://scontent.fpiu2-1.fna.fbcdn.net/v/t39.30808-6/347110408_111160118647103_2519600388151009638_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeHmWRlVV5_EPkcrYK_dPzKoMFAKHoVEAvQwUAoehUQC9K91An2Gjt1JQKr96nrR4gRBWIyDf7MAoYCC9Fh1kr0S&_nc_ohc=kjBwxqxq_pIAX_xPDRh&_nc_ht=scontent.fpiu2-1.fna&oh=00_AfCVP8O_AIM9YBdg1LzSHTULBKOEx6A2u-QfWD56LGV9rQ&oe=64668D40" alt="Imagen del Día de las Madres">
+    </div>
     <p>Querida mamá,</p>
-    <p>Gracias por ser una madre maravillosa y por todo tu amor y apoyo. Eres especial y te quiero mucho, eres la mejor de todas.</p>
-    <button class="animate__animated animate__bounceIn">Enviar Tarjeta</button>
+    <p>Gracias por ser una madre maravillosa y por todo tu amor y apoyo. Eres especial y te quiero mucho.</p>
+    <button class="rose-effect">Enviar Tarjeta</button>
   </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      $(".animate__animated").addClass("animate__delay-1s");
-    });
-  </script>
 </body>
 </html>
